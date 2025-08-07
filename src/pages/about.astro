@@ -1,9 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const team = [
+  { name: 'Steve', role: 'Full-stack Developer' },
+  { name: 'Alex', role: 'UI/UX Designer' },
+  { name: 'Herobrine', role: 'Backend Engineer' }
+];
 ---
-<Layout title='About Us'>
-  <h1 class="text-3xl font-bold underline">About Us</h1>
-  <p>Welcome to our about page! Here you can learn more about our team and what we do.</p>
-  <p>We are a group of passionate developers and designers working together to create amazing projects.</p>
+
+<Layout title="About Us">
+  <section class="max-w-4xl mx-auto px-4 py-12 text-white">
+    <h1 class="text-4xl font-bold mb-6 text-green-400">About Our Minecraft Project</h1>
+    <p class="text-lg mb-4">
+      We are a group of Minecraft enthusiasts building tools for players and server owners. Our main focus is to provide real-time stats, improve gameplay experience, and offer tools that enhance server management.
+    </p>
+    <p class="text-lg mb-8">
+      Our current project, <strong>Hypixel Stats</strong>, tracks player counts, server capacity, and more — all updated in real-time!
+    </p>
+
+    <h2 class="text-2xl font-semibold mb-4 text-yellow-300">Meet the Team</h2>
+    <ul class="space-y-3">
+      {team.map((member) => (
+        <li class="bg-gray-800 p-4 rounded-md shadow-md">
+          <p class="text-lg font-bold">{member.name}</p>
+          <p class="text-sm text-gray-300">{member.role}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
 </Layout>

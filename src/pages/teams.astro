@@ -2,13 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faDiscord, faFacebook, faInstagram, faTwitter, faLine, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { DIRTY } from 'astro:schema';
 
 type team = [
     name: string,
     img: string,
     role: string,
-    social: string, // comma-separated list of social platforms
+    social: string,
     github?: string,
     facebook?: string,
     youtube?: string,
@@ -49,7 +48,7 @@ const teams = [
     discord: 'https://discord.com/users/evosolin#0001',
     instagram: 'https://instagram.com/charlie',
     facebook: 'https://facebook.com/evosolin',
-        
+
   },
 ];
 

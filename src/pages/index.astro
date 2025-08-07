@@ -1,13 +1,45 @@
 ---
-import Layout from '../layouts/Layout.astro'; // ถ้าคุณมี layout
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+
+const res = await fetch('https://api.mcstatus.io/v2/status/java/hypixel.net');
+const data = await res.json();
+
+const playerCount = data.players.online;
+const maxPlayers = data.players.max;
+const serverName = 'Ratree Server';
+const serverAddress = 'example.playgame.net';
+const serverDescription = data.motd.clean.split(' ') ?? 'Minecraft Server';
 ---
-<Layout title='Homepage'>
-  <h1>welcome page</h1>
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
-<div>
-    <p>Welcome to the homepage. This is a simple Astro page.</p>
-    <p>Here you can find various links and information about our site.</p>
-</div>
+
+<Layout title={serverName}>
+  <div class="text-center py-16">
+   <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 to-green-600 bg-clip-text text-transparent">
+    {serverName}
+    </h1>
+    <p class="mt-4 text-xl text-white">Real-time Minecraft server statistics</p>
+
+    <div class="mt-6 text-white">
+      <p class="text-lg">เซิร์ฟเวอร์: <code>{serverAddress}</code></p>
+      <p class="text-lg mt-2">คำอธิบาย: <em>{serverDescription}</em></p>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-2 justify-center text-lg">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md text-white">
+        <h2 class="text-2xl font-semibold">👥 ผู้เล่นออนไลน์</h2>
+        <p class="mt-2 text-3xl text-green-400">{playerCount}</p>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md text-white">
+        <h2 class="text-2xl font-semibold">📦 ความจุเซิร์ฟเวอร์</h2>
+        <p class="mt-2 text-3xl text-yellow-400">{maxPlayers}</p>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <a href="/teams" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+        ดูทีมงาน
+      </a>
+    </div>
+  </div>
 </Layout>
