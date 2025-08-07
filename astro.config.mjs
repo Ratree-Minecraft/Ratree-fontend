@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,21 +32,21 @@ export default defineConfig({
         },
       ],
       sidebar: [
-		
+        
         {
           label: "Getting Started",
           items: [
-			{ label: "How to join", slug: "wiki/how-to-join" },
-			{ label: "How to buy", slug: "wiki/how-to-shop" }
-			
-		],
-		},
-		{
-		  label: "Guides",
-		  autogenerate: { directory: "wiki/guides" },
+            { label: "How to join", slug: "wiki/how-to-join" },
+            { label: "How to buy", slug: "wiki/how-to-shop" }
+            
+        ],
+        },
+        {
+          label: "Guides",
+          autogenerate: { directory: "wiki/guides" },
 
-		},
-		{
+        },
+        {
           label: "Skills",
           autogenerate: { directory: "wiki/skills" },
         },
@@ -56,4 +57,8 @@ export default defineConfig({
       ],
     }),
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

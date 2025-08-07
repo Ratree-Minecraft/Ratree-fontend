@@ -1,6 +1,8 @@
 ---
 // import '../styles/main.css';
 import '../assets/styles/global.css';
+import Navigation from './Navigation.astro';
+import Footer from './Footer.astro';
 export interface Props {
   title: string;
   description?: string;
@@ -16,10 +18,12 @@ export interface Props {
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Home | Brownyrollz</title>
+		<title>| Brownyrollz</title>
 	</head>
 	<body>
+        <Navigation />
 		<slot />
+        <Footer />
 	</body>
 </html>
 <style>
