@@ -37,9 +37,8 @@ export default defineConfig({
         {
           label: "Getting Started",
           items: [
-			{ label: "How to play", slug: "wiki/example" },
-			{ label: "How to pay", slug: "wiki/pay" },
-			{ label: "How to join", slug: "wiki/how-to-join" }
+			{ label: "How to join", slug: "wiki/how-to-join" },
+			{ label: "How to buy", slug: "wiki/how-to-shop" }
 			
 		],
 		},
@@ -49,8 +48,8 @@ export default defineConfig({
 
 		},
         {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
+          label: "Examples",
+          autogenerate: { directory: "wiki/example" },
         },
       ],
     }),
