@@ -1,6 +1,102 @@
-<div class="flex flex-row">
-    <h1 class="text-3xl font-bold underline">
-      Teams Page
-    </h1>
-    <p>Welcome to the teams section. Here you will find information about various teams.</p>
-</div>
+---
+import Layout from '../layouts/Layout.astro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faDiscord, faFacebook, faInstagram, faTwitter, faLine, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { DIRTY } from 'astro:schema';
+
+type team = [
+    name: string,
+    img: string,
+    role: string,
+    social: string, // comma-separated list of social platforms
+    github?: string,
+    facebook?: string,
+    youtube?: string,
+    line?: string
+]
+
+type iconMap = {
+    [key: string]: any
+}
+
+const teams = [
+  {
+    name: 'Trickered',
+    role: 'Project Manager, Developer & Tester',
+    img: 'https://i.pravatar.cc/150?img=1',
+    social: 'github,facebook,youtube,discord',
+    github: 'https://github.com/trickered',
+    discord: 'https://discord.com/users/trickered#0001',
+    facebook: 'https://facebook.com/trickered',
+    youtube: 'https://youtube.com/trickered',
+    line: 'https://line.me/ti/p/~trickered',
+  },
+  {
+    name: 'Brownyroll',
+    role: 'Developer, GUI & items Designer & Tester',
+    img: 'https://i.pravatar.cc/150?img=2',
+    social: 'github,facebook,discord,instagram',
+    discord: 'https://discord.com/users/brownyroll#0001',
+    github: 'https://github.com/Brownyroll',
+    facebook: 'https://facebook.com/brownyroll',
+    instagram: 'https://instagram.com/brownyroll',
+  },
+  {
+    name: 'Evosolin',
+    role: 'Items Designer & Tester & Community Manager',
+    img: 'https://i.pravatar.cc/150?img=3',
+    social: 'facebook,discord',
+    discord: 'https://discord.com/users/evosolin#0001',
+    instagram: 'https://instagram.com/charlie',
+    facebook: 'https://facebook.com/evosolin',
+        
+  },
+];
+
+const iconMap = {
+  github: faGithub,
+  discord: faDiscord,
+  facebook: faFacebook,
+  youtube: faYoutube,
+  line: faLine,
+  instagram: faInstagram,
+  twitter: faTwitter,
+};
+---
+
+<Layout title="Teams">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-bold mb-4">Teams Page</h1>
+    <p class="mb-8 text-gray-600">Welcome to the teams section. Here you will find information about various teams.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {teams.map((member) => {
+        const socialList = member.social.split(',').map((s) => s.trim());
+
+        return (
+          <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 text-center">
+            <img src={member.img} alt={member.name} class="w-24 h-24 rounded-full mx-auto mb-4" />
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">{member.name}</h2>
+            <p class="text-gray-500 dark:text-gray-400 mb-4">{member.role}</p>
+
+            <div class="flex justify-center space-x-4">
+              {socialList.map((platform) =>
+                member[platform] ? (
+                  <a
+                    href={member[platform]}
+                    class="text-gray-400 hover:text-blue-500 transition items-center justify-center flex flex-col"
+                    target="_blank"
+                    aria-label={platform}
+                    >
+                    <FontAwesomeIcon class="mx-auto items-center justify-between text-2xl" aria-hidden="true" width="16px" height="16px" icon={iconMap[platform]} />
+                    <span>{platform}</span>
+                  </a>
+                ) : null
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</Layout>
