@@ -1,26 +1,56 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-		}),
-	],
+  integrations: [
+    starlight({
+      // base: '/docs/',
+      // trailingSlash: "never",
+      title: "Ratree Docs",
+      description: "Documentation for Ratree",
+      // defaultLocale: 'en',
+      // locales: {
+      // 	en: {
+      // 	label: 'English',
+      // 	},
+      // 	'zh-cn': {
+      // 	label: '简体中文',
+      // 	lang: 'zh-CN',
+      // 	},
+      // 	// Arabic docs in `src/content/docs/ar/`
+      // 	ar: {
+      // 	label: 'العربية',
+      // 	dir: 'rtl',
+      // 	},
+      // },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/ratree-minecraft",
+        },
+      ],
+      sidebar: [
+		
+        {
+          label: "Getting Started",
+          items: [
+			{ label: "How to play", slug: "docs/example" },
+			{ label: "How to pay", slug: "docs/pay" }
+		],
+		},
+		{
+		  label: "Guides",
+		  autogenerate: { directory: "docs/guides" },
+
+		},
+        {
+          label: "Reference",
+          autogenerate: { directory: "reference" },
+        },
+      ],
+    }),
+  ],
 });
