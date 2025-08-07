@@ -6,10 +6,8 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
-      // base: '/docs/',
-      // trailingSlash: "never",
-      title: "Ratree Docs",
-      description: "Documentation for Ratree",
+      title: "Ratree Wiki",
+      description: "wiki for user play ratree server",
       // defaultLocale: 'en',
       // locales: {
       // 	en: {
@@ -47,6 +45,10 @@ export default defineConfig({
 		  autogenerate: { directory: "wiki/guides" },
 
 		},
+		{
+          label: "Skills",
+          autogenerate: { directory: "wiki/skills" },
+        },
         {
           label: "Examples",
           autogenerate: { directory: "wiki/example" },
