@@ -37,13 +37,15 @@ export default defineConfig({
         {
           label: "Getting Started",
           items: [
-			{ label: "How to play", slug: "docs/example" },
-			{ label: "How to pay", slug: "docs/pay" }
+			{ label: "How to play", slug: "wiki/example" },
+			{ label: "How to pay", slug: "wiki/pay" },
+			{ label: "How to join", slug: "wiki/how-to-join" }
+			
 		],
 		},
 		{
 		  label: "Guides",
-		  autogenerate: { directory: "docs/guides" },
+		  autogenerate: { directory: "wiki/guides" },
 
 		},
         {
